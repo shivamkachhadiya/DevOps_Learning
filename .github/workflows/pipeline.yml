@@ -18,3 +18,6 @@ jobs:
 
       - name: Print message
         run: echo "Hello from the DevOps pipeline!"
+
+      - name: Create website package
+        run: zip -r website.zip index.html
