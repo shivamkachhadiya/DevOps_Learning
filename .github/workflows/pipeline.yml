@@ -1,13 +1,13 @@
 name: DevOps Learning Pipeline
 
-on:   #Run pipeline when code is pushed
+on:
   push:
     branches:
       - main
 
 jobs:
   first-job:
-    runs-on: ubuntu-latest  #This means GitHub creates a temporary Ubuntu server to run the pipeline.
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -16,8 +16,11 @@ jobs:
       - name: Show project files
         run: ls -la
 
-      - name: Print message
-        run: echo "Hello from the DevOps pipeline!"
-
       - name: Create website package
         run: zip -r website.zip index.html
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-package
+          path: website.zip
