@@ -1,0 +1,20 @@
+name: DevOps Learning Pipeline
+
+on:   #Run pipeline when code is pushed
+  push:
+    branches:
+      - main
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest  #This means GitHub creates a temporary Ubuntu server to run the pipeline.
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show project files
+        run: ls -la
+
+      - name: Print message
+        run: echo "Hello from the DevOps pipeline!"
